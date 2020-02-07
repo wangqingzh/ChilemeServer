@@ -24,6 +24,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("admin")
                 .antMatchers("/user/**").hasRole("user")
+                .antMatchers("/test/**").permitAll()
                 .anyRequest().authenticated();
     }
 }
