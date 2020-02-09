@@ -24,7 +24,10 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("admin")
                 .antMatchers("/user/**").hasRole("user")
-                .antMatchers("/test/**").permitAll()
+                .antMatchers("/test/**").permitAll() //暂时放开对测试接口
+                .antMatchers("/v2/api-docs", "/swagger-resources/configuration/ui",
+                        "/swagger-resources","/swagger-resources/configuration/security",
+                        "/swagger-ui.html","/course/coursebase/**", "/webjars/**").permitAll()  // 放开swagger文档接口
                 .anyRequest().authenticated();
     }
 }
