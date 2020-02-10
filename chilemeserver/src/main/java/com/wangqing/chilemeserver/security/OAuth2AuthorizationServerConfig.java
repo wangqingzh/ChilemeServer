@@ -1,6 +1,6 @@
 package com.wangqing.chilemeserver.security;
 
-import com.wangqing.chilemeserver.service.UserService;
+import com.wangqing.chilemeserver.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,7 +35,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      * 该对象将为刷新token提供支持
      */
     @Autowired
-    UserService userDetailsService;
+    CustomUserDetailsService userDetailsService;
 
     /**
      * 指定密码的加密方式

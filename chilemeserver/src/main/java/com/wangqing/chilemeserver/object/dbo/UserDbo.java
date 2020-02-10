@@ -4,11 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -17,7 +15,9 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
-public class UserDb {
+@Table(name = "user")
+@EntityListeners(AuditingEntityListener.class)
+public class UserDbo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column(columnDefinition = "COMMENT '用户id'")  // 关联 UserDB 表中的id

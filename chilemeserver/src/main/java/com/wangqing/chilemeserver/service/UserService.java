@@ -1,31 +1,52 @@
 package com.wangqing.chilemeserver.service;
 
 import com.wangqing.chilemeserver.object.ao.User;
-import com.wangqing.chilemeserver.object.dbo.UserDb;
+import com.wangqing.chilemeserver.object.dbo.UserDbo;
+import com.wangqing.chilemeserver.object.dbo.UserRole;
+import com.wangqing.chilemeserver.object.dto.SignUpDto;
 import com.wangqing.chilemeserver.repository.UserRepository;
+import com.wangqing.chilemeserver.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
- * 自定义用户服务 在这里从数据库查询并返回用户信息
- * 在SecurityConfig中替换掉默认的UserDetailService
+ * 用户登录 注册 修改密码 找回密码 服务
  */
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
     @Autowired
-    UserRepository userRepository; //用于查询用户信息
+    UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDb userDB = userRepository.findUserDBByIdentifier(username);
-        if (userDB == null){
-            throw new UsernameNotFoundException("未查询到该用户");
-        }
-        User user = new User(userDB.getIdentifier(), userDB.getCredential(), userDB.isEnabled(), userDB.isLocked(), userRepository.getUserRolesByUid(userDB.getUserId()));
-        return user;
+    @Autowired
+    UserRoleRepository userRoleRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    /**
+     * 创建新用户
+     *
+     * @param signUpDto
+     */
+    public void createUser(SignUpDto signUpDto) {
+//        Integer userId = (int) ((Math.random() * 9 + 1) * 100000);
+//
+//        while (userRepository.existsById(userId)) {
+//            userId = (int) ((Math.random() * 9 + 1) * 100000);
+//        }
+        UserDbo userDbo = new UserDbo();
+        //userDbo.setUserId(userId);
+        userDbo.setIdentifier(signUpDto.getIdentifier());
+        userDbo.setCredential(passwordEncoder.encode(signUpDto.getCredential()));
+        userDbo.setSecurityQuestion(signUpDto.getSecurityQuestion());
+        userDbo.setSecurityAnswer(signUpDto.getSecurityAnswer());
+
+        userDbo = userRepository.save(userDbo);
+        // 向用户添加角色
+        userRoleRepository.save(UserRole.of(userDbo.getUserId(), 3));
     }
 }
