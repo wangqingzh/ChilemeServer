@@ -38,6 +38,10 @@ public class UserDb {
     //@Column(columnDefinition = "COMMENT '用户是否被有效'")
     private boolean enabled = true;
 
+    private String securityQuestion;
+
+    private String securityAnswer;
+
     @CreatedDate
     private Date createTime;
 

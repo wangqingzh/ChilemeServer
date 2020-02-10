@@ -1,29 +1,25 @@
 package com.wangqing.chilemeserver.web.api;
 
-import com.wangqing.chilemeserver.object.ao.ApiErrorResponse;
-import com.wangqing.chilemeserver.object.ao.ErrorCode;
+import com.wangqing.chilemeserver.object.dto.SignUpDto;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
- * 用户web接口
+ * 用户web接口 登录 注册 修改密码 找回密码
  */
 @RestController
 //@RequestMapping("/api/v1/user")
+@RequestMapping("/test")
 public class UserApi {
-    @GetMapping("/test")
-    public HttpEntity<?> test(){
-        ApiErrorResponse response = new ApiErrorResponse.ApiErrorResponseBuilder()
-                .withStatus(HttpStatus.ACCEPTED)
-                .withError_code(ErrorCode.USER_LOGIN_ERROR.getCode())
-                .withMessage("")
-                .withDetail("")
-                .build();
-        return new ResponseEntity<>(response, response.getStatus());
+
+
+    @PostMapping("/")
+    public HttpEntity<?> createUser(@RequestBody SignUpDto signUpDto){
+        // springboot 检查到请求body为空 则返回错误信息
+        System.out.println(signUpDto.toString());
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     
 }
