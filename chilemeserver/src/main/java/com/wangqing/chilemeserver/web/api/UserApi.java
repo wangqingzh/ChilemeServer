@@ -1,6 +1,7 @@
 package com.wangqing.chilemeserver.web.api;
 
 import com.wangqing.chilemeserver.exception.UserExistedException;
+import com.wangqing.chilemeserver.object.ao.CommonResult;
 import com.wangqing.chilemeserver.object.dbo.UserDbo;
 import com.wangqing.chilemeserver.object.dto.SignUpDto;
 import com.wangqing.chilemeserver.repository.UserRepository;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
  * 用户web接口 登录 注册 修改密码 找回密码
  */
 @RestController
-//@RequestMapping("/api/v1/user")
-@RequestMapping("/test")
+@RequestMapping("/api/v1/user")
+//@RequestMapping("/test")
 public class UserApi {
 
     @Autowired
@@ -26,7 +27,7 @@ public class UserApi {
     @Autowired
     UserService userService;
 
-    @PostMapping("/")
+    @PostMapping
     public HttpEntity<?> createUser(@RequestBody SignUpDto signUpDto) {
         // springboot 检查到请求body为空 则返回错误信息
         if (!StringUtils.isEmpty(signUpDto.getIdentifier())){
@@ -36,7 +37,7 @@ public class UserApi {
             }
         }
         userService.createUser(signUpDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(CommonResult.success(), HttpStatus.CREATED);
     }
 
 }
