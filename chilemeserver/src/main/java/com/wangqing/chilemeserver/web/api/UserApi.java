@@ -1,5 +1,6 @@
 package com.wangqing.chilemeserver.web.api;
 
+import com.wangqing.chilemeserver.exception.ParameterNullException;
 import com.wangqing.chilemeserver.object.dto.SignUpDto;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -16,10 +17,13 @@ public class UserApi {
 
 
     @PostMapping("/")
-    public HttpEntity<?> createUser(@RequestBody SignUpDto signUpDto){
+    public HttpEntity<?> createUser(@RequestBody SignUpDto signUpDto) {
         // springboot 检查到请求body为空 则返回错误信息
         System.out.println(signUpDto.toString());
+        if (true) {
+            throw new ParameterNullException();
+        }
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    
+
 }

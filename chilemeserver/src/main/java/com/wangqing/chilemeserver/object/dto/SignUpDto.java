@@ -2,9 +2,11 @@ package com.wangqing.chilemeserver.object.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
+@ToString
 public class SignUpDto {
     /* 登录类型 默认phone*/
     private String identityType = "phone";
