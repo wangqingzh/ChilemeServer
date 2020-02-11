@@ -40,4 +40,10 @@ public class UserApi {
         return new ResponseEntity<>(CommonResult.success(), HttpStatus.CREATED);
     }
 
+
+    @GetMapping
+    public String test(){
+        return new String("测试https");
+    }
+
 }

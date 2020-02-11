@@ -1,13 +1,17 @@
 # server configuration
 server:
-  port: 8080
+  port: 8443  # https port
+  http-port: 8080 # http port -> redirect https port
   servlet:
     context-path: /
   ssl:
+    enabled: true
     key-store: classpath:keystore.p12
-    key-password: wangqing
     key-store-type: PKCS12
-    key-alias: tomcat
+    key-alias: tomcat_https
+    key-store-password: wangqing  # 千万不能配成key-password 坑爹
+
+
 
 # sql configuration
 spring:
