@@ -28,6 +28,7 @@ public class UserInfo {
     /** 简介 */
     private String intro;
     //@Column(columnDefinition = "COMMENT '用户头像地址'")
+
     private String avatarUrl;
 
     @CreatedDate

@@ -26,6 +26,7 @@ public interface UserRepository extends JpaRepository<UserDbo, Integer> {
     List<Role> getUserRolesByUid(Integer uid);
 
 
-
+    @Query(value = "select user_id from user where identifier = ?1", nativeQuery = true)
+    String getUserIdByIdentifier(String identifier);
 
 }

@@ -1,5 +1,6 @@
 package com.wangqing.chilemeserver.web.api;
 
+import com.wangqing.chilemeserver.exception.ParameterNullException;
 import com.wangqing.chilemeserver.exception.UserExistedException;
 import com.wangqing.chilemeserver.object.ao.CommonResult;
 import com.wangqing.chilemeserver.object.dbo.UserDbo;
@@ -27,6 +28,11 @@ public class UserApi {
     @Autowired
     UserService userService;
 
+    /**
+     * 注册接口 创建用户
+     * @param signUpDto
+     * @return
+     */
     @PostMapping
     public HttpEntity<?> createUser(@RequestBody SignUpDto signUpDto) {
         // springboot 检查到请求body为空 则返回错误信息
@@ -35,11 +41,23 @@ public class UserApi {
             if (userDbo != null){
                 throw new UserExistedException();
             }
+        }else {
+            throw new ParameterNullException();
         }
         userService.createUser(signUpDto);
         return new ResponseEntity<>(CommonResult.success(), HttpStatus.CREATED);
     }
 
+    /**
+     * 根据登录标识查找用户id
+     * @param identifier
+     * @return
+     */
+    @GetMapping("/{identifier}")
+    public HttpEntity<?> getUserIdByIdentifier(@PathVariable String identifier){
+        CommonResult commonResult = CommonResult.success(userRepository.getUserIdByIdentifier(identifier));
+        return new ResponseEntity<>(commonResult, HttpStatus.OK);
+    }
 
     @GetMapping
     public String test(){

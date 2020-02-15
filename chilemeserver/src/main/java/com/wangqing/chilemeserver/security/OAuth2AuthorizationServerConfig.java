@@ -81,5 +81,6 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // 表示支持client_id 和 client_secret 做登录认证 不设置将出现登录提示
         security.allowFormAuthenticationForClients();
+        security.checkTokenAccess("permitAll()"); //支持check_token端点
     }
 }
