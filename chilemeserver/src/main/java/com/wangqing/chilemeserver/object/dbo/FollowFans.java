@@ -9,25 +9,26 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * 我的收藏
+ * 关注 、 粉丝 列表
  */
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class MyFavorite {
+public class FollowFans {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer postId;
+    private Integer followedId;
 
-    private Integer userId;
+    private Integer fansId;
 
-    private Boolean isDelete = false;
+    private Boolean enable = true;
 
     @CreatedDate
     private LocalDateTime createTime;
 
     @LastModifiedDate
     private LocalDateTime updateTime;
+
 }
