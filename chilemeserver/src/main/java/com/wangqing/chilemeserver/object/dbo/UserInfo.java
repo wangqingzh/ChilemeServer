@@ -22,14 +22,16 @@ public class UserInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    /* 用户id */
     private Integer userId;
-    //@Column(columnDefinition = "COMMENT '用户昵称'")
-    private String nickName;
-    /** 简介 */
-    private String intro;
-    //@Column(columnDefinition = "COMMENT '用户头像地址'")
-
-    private String avatarUrl;
+    /* 用户昵称 默认nikeName */
+    private String nickName = "nikeName";
+    /* 用户简介 */
+    private String intro = null;
+    /* 用户头像地址 */
+    private String avatarUrl = null;
+    /* 用户空间封面 */
+    private String coverUrl = null;
 
     @CreatedDate
     private Date createTime;

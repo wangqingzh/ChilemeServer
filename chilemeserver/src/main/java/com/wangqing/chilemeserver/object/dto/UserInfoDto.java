@@ -7,11 +7,13 @@ public class UserInfoDto {
     /* 用户id */
     private Integer userId;
     /* 用户昵称 */
-    private String nickName = null;
+    private String nickName = "nikeName";
     /* 用户简介 */
     private String intro = null;
     /* 用户头像地址 */
     private String avatarUrl = null;
+    /* 用户空间封面 */
+    private String coverUrl = null;
     /* 关注数 */
     private Integer attentionNumber = 0;
     /* 粉丝数 */
@@ -20,7 +22,7 @@ public class UserInfoDto {
     private Integer postNumber = 0;
     /* 历史数 */
     private Integer historyNumber = 0;
-    /* 手长数 */
+    /* 收藏数 */
     private Integer myFavoriteNumber = 0;
     /* 点赞数 */
     private Integer myLikeNumber = 0;

@@ -31,7 +31,7 @@ public class ApiExceptionHandler {
     @ExceptionHandler({ParameterNullException.class})
     public HttpEntity<?> ParameterNullExceptionHandle(ParameterNullException exception) {
 
-        return new ResponseEntity<>(CommonResult.error(ResultCode.PARAM_IS_BLANK), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(CommonResult.error(ResultCode.PARAM_IS_BLANK), HttpStatus.OK);
     }
 
     /**
@@ -42,6 +42,6 @@ public class ApiExceptionHandler {
     @ExceptionHandler({UserExistedException.class})
     public HttpEntity<?> userExistedExceptionHandle(UserExistedException exception){
 
-        return new ResponseEntity<>(CommonResult.error(ResultCode.USER_HAS_EXITED), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(CommonResult.error(ResultCode.USER_HAS_EXITED), HttpStatus.OK);
     }
 }
