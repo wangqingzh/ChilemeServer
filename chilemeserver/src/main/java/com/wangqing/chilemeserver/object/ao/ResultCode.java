@@ -6,6 +6,7 @@ package com.wangqing.chilemeserver.object.ao;
 public enum ResultCode {
     /* 成功 */
     SUCCESS(1, "成功！"),
+    LOG_OUT_SUCCESS(2, "注销成功"),
     /* 参数错误： 1001-1999 */
     PARAM_IS_INVALID(1001,"参数无效"),
     PARAM_IS_BLANK(1002, "参数为空"),
@@ -16,7 +17,9 @@ public enum ResultCode {
     USER_LOGIN_ERROR(2002, "账号不存在或密码错误"),
     USER_ACCOUNT_FORBIDDEN(2003, "账号已被禁用"),
     USER_NOT_EXIST(2004, "用户不存在"),
-    USER_HAS_EXITED(2005, "用户已存在");
+    USER_HAS_EXITED(2005, "用户已存在"),
+    /* 系统错误 */
+    LOG_OUT_ERROR(5001, "注销失败");
 
     private Integer code;
     private String message;

@@ -2,8 +2,10 @@ package com.wangqing.chilemeserver.service;
 
 import com.wangqing.chilemeserver.object.ao.User;
 import com.wangqing.chilemeserver.object.dbo.UserDbo;
+import com.wangqing.chilemeserver.object.dbo.UserInfo;
 import com.wangqing.chilemeserver.object.dbo.UserRole;
 import com.wangqing.chilemeserver.object.dto.SignUpDto;
+import com.wangqing.chilemeserver.repository.UserInfoRepository;
 import com.wangqing.chilemeserver.repository.UserRepository;
 import com.wangqing.chilemeserver.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class UserService {
 
     @Autowired
     UserRoleRepository userRoleRepository;
+
+    @Autowired
+    UserInfoRepository userInfoRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -48,5 +53,7 @@ public class UserService {
         userDbo = userRepository.save(userDbo);
         // 向用户添加角色
         userRoleRepository.save(UserRole.of(userDbo.getUserId(), 3));
+        // 向用户信息表初始化该用户信息
+        userInfoRepository.save(UserInfo.of(userDbo.getUserId()));
     }
 }

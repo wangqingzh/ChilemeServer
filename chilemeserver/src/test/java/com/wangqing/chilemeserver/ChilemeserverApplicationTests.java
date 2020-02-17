@@ -1,7 +1,8 @@
 package com.wangqing.chilemeserver;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.wangqing.chilemeserver.repository.PostRepository;
 import com.wangqing.chilemeserver.repository.UserRepository;
+import com.wangqing.chilemeserver.service.MineService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -15,11 +16,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ChilemeserverApplicationTests {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PostRepository postRepository;
+
+    @Autowired
+    MineService mineService;
+
     private final static Logger logger = LoggerFactory.getLogger(ChilemeserverApplicationTests.class);
 
     @Test
     public void contextLoads()  {
-        System.out.println(userRepository.getUserIdByIdentifier("588"));
+        System.out.println(mineService.getUserInfoDtoByUserId(0));
     }
 
 }

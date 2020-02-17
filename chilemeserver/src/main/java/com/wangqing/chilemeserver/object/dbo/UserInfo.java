@@ -2,6 +2,8 @@ package com.wangqing.chilemeserver.object.dbo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -17,12 +19,14 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor(staticName = "of")
 public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     /* 用户id */
+    @NonNull
     private Integer userId;
     /* 用户昵称 默认nikeName */
     private String nickName = "nikeName";

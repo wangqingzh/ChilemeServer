@@ -3,9 +3,11 @@ package com.wangqing.chilemeserver.repository;
 import com.wangqing.chilemeserver.object.dbo.Role;
 import com.wangqing.chilemeserver.object.dbo.UserDbo;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -28,5 +30,17 @@ public interface UserRepository extends JpaRepository<UserDbo, Integer> {
 
     @Query(value = "select user_id from user where identifier = ?1", nativeQuery = true)
     String getUserIdByIdentifier(String identifier);
+
+    /* 根据用户id 修改用户手机号 */
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE user SET identity = ?1 WHERE user_id = ?2", nativeQuery = true)
+    int updateIdentifierByUserId(String identifier, Integer userId);
+
+    /* 根据用户id 修改用户密码 */
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE user SET credential = ?1 WHERE user_id = ?2", nativeQuery = true)
+    int updateCredentialByUserId(String credential, Integer userId);
 
 }

@@ -14,12 +14,12 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class FollowFans {
+public class AttentionFans {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer followedId;
+    private Integer attentionId;
 
     private Integer fansId;
 

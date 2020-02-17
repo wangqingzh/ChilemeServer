@@ -28,6 +28,14 @@ public class CommonResult {
         return commonResult;
     }
 
+    public static CommonResult success(ResultCode resultCode){
+        CommonResult commonResult = new CommonResult();
+        commonResult.timestamp = LocalDateTime.now();
+        commonResult.code = resultCode.code();
+        commonResult.message = resultCode.message();
+        return commonResult;
+    }
+
     public static CommonResult success(Object data){
         CommonResult commonResult = new CommonResult();
         commonResult.timestamp = LocalDateTime.now();
