@@ -22,7 +22,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     public void configure(HttpSecurity http) throws Exception {
         // 这里配置的优先级低于securityconfig
         http.authorizeRequests()
-                .antMatchers("/api/v1/user/**", "/test/**").permitAll() //暂时放开对测试接口
+                .antMatchers("/api/v1/user/**", "/file/**", "/image/**").permitAll() //暂时放开对测试接口
                 .antMatchers("/v2/api-docs", "/swagger-resources/configuration/ui",
                         "/swagger-resources","/swagger-resources/configuration/security",
                         "/swagger-ui.html","/course/coursebase/**", "/webjars/**").permitAll()  // 放开swagger文档接口

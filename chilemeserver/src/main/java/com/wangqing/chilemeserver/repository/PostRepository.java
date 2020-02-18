@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface PostRepository extends JpaRepository<Post, Integer> {
     /* 根据发帖人的id 查询该发帖人发过的贴子数量 */
     Integer countByPostUserId(Integer postUserId);
+
+    /* 保存帖子 */
+    @Override
+    <S extends Post> S save(S entity);
 }

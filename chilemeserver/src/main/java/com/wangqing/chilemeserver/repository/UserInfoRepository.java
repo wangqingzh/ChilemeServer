@@ -39,4 +39,5 @@ public interface UserInfoRepository extends JpaRepository<UserInfo, Integer> {
     @Query(value = "UPDATE user_info SET cover_url = ?1 WHERE user_id = ?2", nativeQuery = true)
     int updateCoverUrlByUserId(String coverUrl, Integer userId);
 
+
 }

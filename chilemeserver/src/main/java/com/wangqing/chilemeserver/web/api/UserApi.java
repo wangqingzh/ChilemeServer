@@ -14,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+
 /**
  * 用户web接口 登录 注册 修改密码 找回密码
  */
@@ -27,6 +30,8 @@ public class UserApi {
 
     @Autowired
     UserService userService;
+
+
 
     /**
      * 注册接口 创建用户
@@ -60,8 +65,12 @@ public class UserApi {
     }
 
     @GetMapping
-    public String test(){
-        return new String("测试https");
+    public String test(HttpServletRequest req){
+
+        String realPath = req.getSession().getServletContext().getRealPath("/uploadFile/");
+        System.out.println(realPath);
+
+        return null;
     }
 
 }

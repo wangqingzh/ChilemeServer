@@ -10,6 +10,8 @@ server:
     key-store-type: PKCS12
     key-alias: tomcat_https
     key-store-password: wangqing  # 千万不能配成key-password 坑爹
+  tomcat:
+    max-swallow-size: 100MB
 
 
 
@@ -29,9 +31,18 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL57Dialect # Hibernate方言
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
 
 
 # log configuration
 #logging:
 #  level:
 #    root: debug
+
+# file configuration
+file-path: D:\file\  # file save location
+image-path: /image/**  # the path that getting file
