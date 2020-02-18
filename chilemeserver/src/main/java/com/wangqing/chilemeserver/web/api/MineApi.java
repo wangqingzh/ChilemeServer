@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * 需要access_token访问
  */
 @RestController
-@RequestMapping("api/v1/mine")
+@RequestMapping("/api/v1/mine")
 public class MineApi {
     @Autowired
     MineService mineService;
@@ -80,7 +80,7 @@ public class MineApi {
      * @param phone
      * @return
      */
-    @PutMapping("/setting/phone")
+    @PutMapping("/setting/password")
     public HttpEntity<?> modifyPasswordByUserId(@RequestBody ModifyFieldByUserIdDto phone){
         userRepository.updateCredentialByUserId(phone.getField(), phone.getUserId());
         return new ResponseEntity<>(CommonResult.success(), HttpStatus.OK);

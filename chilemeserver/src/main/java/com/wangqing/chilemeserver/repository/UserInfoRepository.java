@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 
 @Repository
 public interface UserInfoRepository extends JpaRepository<UserInfo, Integer> {
+
+
     /* 根据用户id 将用户的信息查出 */
     UserInfo findByUserId(Integer userId);
 
