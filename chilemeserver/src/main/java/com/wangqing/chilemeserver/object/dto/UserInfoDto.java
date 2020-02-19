@@ -11,6 +11,8 @@ public class UserInfoDto {
     private Integer userId;
     /* 用户昵称 */
     private String nickName;
+//    /* 用户手机号 */
+//    private String phoneNumber;
     /* 用户简介 */
     private String intro;
     /* 用户头像地址 */

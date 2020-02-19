@@ -1,5 +1,7 @@
 package com.wangqing.chilemeserver;
 
+import com.wangqing.chilemeserver.object.ao.UploadFileType;
+import com.wangqing.chilemeserver.object.dto.UploadFileDto;
 import com.wangqing.chilemeserver.repository.PostRepository;
 import com.wangqing.chilemeserver.repository.UserRepository;
 import com.wangqing.chilemeserver.service.MineService;
@@ -30,4 +32,10 @@ public class ChilemeserverApplicationTests {
         System.out.println(mineService.getUserInfoDtoByUserId(0));
     }
 
+
+    @Test
+    public void test(){
+        UploadFileDto uploadFileDto = new UploadFileDto(UploadFileType.USER_AVATAR, 453);
+        System.out.println(uploadFileDto);
+    }
 }
