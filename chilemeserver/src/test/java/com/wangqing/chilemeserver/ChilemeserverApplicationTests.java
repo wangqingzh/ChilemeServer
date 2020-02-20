@@ -1,6 +1,6 @@
 package com.wangqing.chilemeserver;
 
-import com.wangqing.chilemeserver.object.ao.UploadFileType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wangqing.chilemeserver.object.dto.UploadFileDto;
 import com.wangqing.chilemeserver.repository.PostRepository;
 import com.wangqing.chilemeserver.repository.UserRepository;
@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,7 +37,5 @@ public class ChilemeserverApplicationTests {
 
     @Test
     public void test(){
-        UploadFileDto uploadFileDto = new UploadFileDto(UploadFileType.USER_AVATAR, 453);
-        System.out.println(uploadFileDto);
     }
 }

@@ -44,5 +44,5 @@ spring:
 #    root: debug
 
 # file configuration
-file-path: D:\file\  # file save location
+file-path: /home/qing/tmp/ # D:\file\  # file save location
 image-path: /image/**  # the path that getting file

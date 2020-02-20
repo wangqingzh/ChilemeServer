@@ -1,9 +1,8 @@
 package com.wangqing.chilemeserver.service;
 
-import com.wangqing.chilemeserver.object.ao.FileSaveAo;
+import com.wangqing.chilemeserver.object.dto.UploadFileDto;
 import com.wangqing.chilemeserver.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,14 +15,23 @@ public class FileService {
     UserInfoRepository userInfoRepository;
 
 
-    public void saveFileUrl(FileSaveAo fileSaveAo) {
-        String type = fileSaveAo.getType();
-        Integer userId = fileSaveAo.getUserId();
-        String fileUrl = fileSaveAo.getFileUrl();
-        if (type.equals("avatar")) {
-            userInfoRepository.updateAvatarUrlByUserId(fileUrl, userId);
-        } else if (type.equals("cover")) {
-            userInfoRepository.updateCoverUrlByUserId(fileUrl, userId);
+    public void saveFileUrl(UploadFileDto uploadFileDto,String fileUrl) {
+        Integer typeCode = uploadFileDto.getTypeCode();
+        Integer id = uploadFileDto.getId();
+
+        switch (typeCode){
+            case UploadFileDto.USER_AVATAR:
+                userInfoRepository.updateAvatarUrlByUserId(fileUrl, id);
+                break;
+            case UploadFileDto.USER_COVER:
+                userInfoRepository.updateCoverUrlByUserId(fileUrl, id);
+                break;
+            case UploadFileDto.POST_IMAGE:
+                break;
+            case UploadFileDto.EVALUATION_IMAGE:
+                break;
+            default:
+                break;
         }
     }
 }

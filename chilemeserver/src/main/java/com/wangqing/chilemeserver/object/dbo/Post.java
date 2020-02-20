@@ -2,6 +2,7 @@ package com.wangqing.chilemeserver.object.dbo;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ public class Post {
     /* 帖子内容 */
     private String content;
     /* 发布的图片链接 */
-    private String imageUrl;
+    private String imageUrl = null;
     /* 帖子分区 */
     private Integer partitionId;
     /* 综合推荐 */
@@ -34,5 +35,8 @@ public class Post {
     private boolean enable = true;
     /* 创建时间 */
     @CreatedDate
-    private LocalDateTime timestamps;
+    private LocalDateTime createTime;
+
+    @LastModifiedDate
+    private LocalDateTime updateTime;
 }

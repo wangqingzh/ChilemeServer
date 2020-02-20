@@ -1,14 +1,14 @@
 package com.wangqing.chilemeserver.web.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wangqing.chilemeserver.object.ao.CommonResult;
-import com.wangqing.chilemeserver.object.ao.FileSaveAo;
+import com.wangqing.chilemeserver.object.dto.UploadFileDto;
 import com.wangqing.chilemeserver.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +32,15 @@ public class FileApi {
     @Value("${image-path}")
     String imagePath;
 
-    @PostMapping("/file/upload/{userId}")
-    public HttpEntity<?> uploadFile(MultipartFile uploadFile, @PathVariable Integer userId, @RequestParam("type") String type){
+    @PostMapping("/file/upload")
+    public HttpEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadFile, @RequestParam("upInfo") String upInfo){
+        UploadFileDto uploadFileDto = null;
+        try {
+            uploadFileDto = new ObjectMapper().readValue(upInfo, UploadFileDto.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(uploadFileDto);
         File folder = new File(filePath); //文件保存目录
         if (!folder.isDirectory()){
             folder.mkdirs();
@@ -45,20 +52,7 @@ public class FileApi {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        fileService.saveFileUrl(new FileSaveAo(userId, imagePath.replace("*", "") + newName, type)); // 将文件路径持久化到数据库
+        fileService.saveFileUrl(uploadFileDto, "image/" + newName); // 将文件路径持久化到数据库
         return new ResponseEntity<>(CommonResult.success(), HttpStatus.OK);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
