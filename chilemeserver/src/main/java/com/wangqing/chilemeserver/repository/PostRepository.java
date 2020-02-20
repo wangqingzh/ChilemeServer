@@ -9,7 +9,8 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     /* 根据发帖人的id 查询该发帖人发过的贴子数量 */
     Integer countByPostUserId(Integer postUserId);
 
-    /* 保存帖子 */
+    /* 保存更新 */
     @Override
-    <S extends Post> S save(S entity);
+    <S extends Post> S saveAndFlush(S entity);
+
 }
