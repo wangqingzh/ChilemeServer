@@ -1,6 +1,7 @@
 package com.wangqing.chilemeserver.service;
 
 import com.wangqing.chilemeserver.object.dto.UploadFileDto;
+import com.wangqing.chilemeserver.repository.PostRepository;
 import com.wangqing.chilemeserver.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Service;
 public class FileService {
     @Autowired
     UserInfoRepository userInfoRepository;
+
+    @Autowired
+    PostRepository postRepository;
 
 
     public void saveFileUrl(UploadFileDto uploadFileDto,String fileUrl) {
@@ -27,6 +31,7 @@ public class FileService {
                 userInfoRepository.updateCoverUrlByUserId(fileUrl, id);
                 break;
             case UploadFileDto.POST_IMAGE:
+                postRepository.updateImageUrlByPostId(fileUrl, id);
                 break;
             case UploadFileDto.EVALUATION_IMAGE:
                 break;
