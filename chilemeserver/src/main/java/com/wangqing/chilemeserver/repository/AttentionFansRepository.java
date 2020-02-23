@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AttentionFansRepository extends JpaRepository<AttentionFans, Integer> {
+
     /* 根据粉丝的id 查询关注数量 */
-    Integer countByFansId(Integer fansId);
+    Integer countByFans_id(Integer fansId);
 
     /* 根据被关注者的id 查询粉丝数量 */
-    Integer countByAttentionId(Integer attentionId);
+    Integer countByAttention_id(Integer attentionId);
 }

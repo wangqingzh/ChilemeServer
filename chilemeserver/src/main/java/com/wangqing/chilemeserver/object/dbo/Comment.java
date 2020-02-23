@@ -9,38 +9,30 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * 帖子
+ * 评论表 盖楼模式
  */
-@Entity
 @Data
+@Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Post {
-    /* 帖子id */
+public class Comment {
+    /* 评论id */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    /* 主题id */
     private Integer post_id;
-    /* 帖子类型 0 校园餐饮 1 美食推荐 */
-    private Integer post_type;
+    /* 评论 */
+    private String content;
+    /* 评论用户 */
+    private Integer from_uid;
+    /* 被回复用户 当评论帖子时 to_uid 为空 */
+    private Integer to_uid;
+    /* 是否被删除 默认 否 */
+    private boolean is_delete = false;
 
-    /* 帖子标题 */
-    private String headline;
-
-    /* 发布的图片链接 */
-    private String image_url = null;
-
-    /* 发帖人 */
-    private Integer post_user_id;
-
-
-    /* 默认有效 false为删除 */
-    private boolean enable = true;
-
-
-    /* 创建时间 */
     @CreatedDate
     private LocalDateTime create_time;
 
-    /* 更新时间 */
     @LastModifiedDate
     private LocalDateTime update_time;
 }

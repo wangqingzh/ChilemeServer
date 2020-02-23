@@ -19,16 +19,15 @@ public class AttentionFans {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer attentionId;
+    private Integer attention_id;
 
-    private Integer fansId;
+    private Integer fans_id;
 
     private Boolean enable = true;
 
     @CreatedDate
-    private LocalDateTime createTime;
+    private LocalDateTime create_id;
 
     @LastModifiedDate
-    private LocalDateTime updateTime;
-
+    private LocalDateTime update_id;
 }

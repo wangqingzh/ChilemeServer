@@ -10,8 +10,9 @@ import javax.transaction.Transactional;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
+
     /* 根据发帖人的id 查询该发帖人发过的贴子数量 */
-    Integer countByPostUserId(Integer postUserId);
+    Integer countByPost_user_id(Integer postUserId);
 
     /* 保存更新 */
     @Override

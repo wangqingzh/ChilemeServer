@@ -5,15 +5,15 @@ import lombok.Data;
 import javax.persistence.*;
 
 /**
- * 发帖分区表
+ * 推荐分区
  * 需提前写入数据
  */
 @Entity
 @Data
-public class PostPartition {
+public class RecommendPartition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer partitionId;
+    private Integer partition_id;
 
-    private String partitionName;
+    private String partition_name;
 }

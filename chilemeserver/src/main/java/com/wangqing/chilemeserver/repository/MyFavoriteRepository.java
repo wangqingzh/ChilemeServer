@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MyFavoriteRepository extends JpaRepository<MyFavorite, Integer> {
+
     /* 根据用户id 查询用户的收藏数 */
-    Integer countByUserId(Integer userId);
+    Integer countByUser_id(Integer userId);
 }

@@ -9,32 +9,30 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * 帖子
+ * 校园餐饮评价
  */
 @Entity
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class Post {
-    /* 帖子id */
+public class CampusEvaluate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer evaluate_id;
+
+    /* 帖子id */
     private Integer post_id;
-    /* 帖子类型 0 校园餐饮 1 美食推荐 */
-    private Integer post_type;
+    /* 食堂id */
+    private Integer hall_id;
+    /* 点名 */
+    private String store_name;
 
-    /* 帖子标题 */
-    private String headline;
+    private String dish;
 
-    /* 发布的图片链接 */
-    private String image_url = null;
+    /* 点评内容 */
+    private String content;
 
-    /* 发帖人 */
-    private Integer post_user_id;
-
-
-    /* 默认有效 false为删除 */
-    private boolean enable = true;
-
+    /* 综合打分 */
+    private float evaluate_score;
 
     /* 创建时间 */
     @CreatedDate
@@ -43,4 +41,7 @@ public class Post {
     /* 更新时间 */
     @LastModifiedDate
     private LocalDateTime update_time;
+
+
+
 }

@@ -19,13 +19,15 @@ public class BrowserHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer postId;
+    private Integer post_id;
 
-    private Integer userId;
+    private Integer user_id;
 
+    /* 创建时间 */
     @CreatedDate
-    private LocalDateTime createTime;
+    private LocalDateTime create_time;
 
+    /* 更新时间 */
     @LastModifiedDate
-    private LocalDateTime updateTime;
+    private LocalDateTime update_time;
 }

@@ -9,25 +9,28 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * 我点赞的 取数据时 连同浏览历史一起 算点赞率 参考 pornhub
+ * 点赞
  */
 @Entity
 @Data
 @EntityListeners(AuditingEntityListener.class)
 public class MyLike {
+    /* 主键 */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private Integer postId;
-
-    private Integer userId;
-
-    private Boolean enable = true;
-
+    /* 对应的帖子或评论id */
+    private Integer type_id;
+    /* 0 帖子 1 评论  */
+    private Integer type;
+    /* 点赞的用户id */
+    private Integer user_id;
+    /* 该条点赞时候有效 */
+    private Boolean status = true;
+    /*  */
     @CreatedDate
-    private LocalDateTime createTime;
-
+    private LocalDateTime create_time;
+    /*  */
     @LastModifiedDate
-    private LocalDateTime updateTime;
+    private LocalDateTime update_time;
 }
