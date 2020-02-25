@@ -29,7 +29,7 @@ public class UserInfo {
     @NonNull
     private Integer userId;
     /* 用户昵称 默认nikeName */
-    private String nickName = "nikeName";
+    private String nickName = "unnamed";
     /* 用户简介 */
     private String intro = null;
     /* 用户头像地址 */

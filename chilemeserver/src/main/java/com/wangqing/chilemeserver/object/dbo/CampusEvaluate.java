@@ -17,14 +17,14 @@ import java.time.LocalDateTime;
 public class CampusEvaluate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer evaluate_id;
+    private Integer evaluateId;
 
     /* 帖子id */
-    private Integer post_id;
+    private Integer postId;
     /* 食堂id */
-    private Integer hall_id;
+    private Integer hallId;
     /* 点名 */
-    private String store_name;
+    private String storeName;
 
     private String dish;
 
@@ -32,15 +32,15 @@ public class CampusEvaluate {
     private String content;
 
     /* 综合打分 */
-    private float evaluate_score;
+    private float evaluateScore;
 
     /* 创建时间 */
     @CreatedDate
-    private LocalDateTime create_time;
+    private LocalDateTime createTime;
 
     /* 更新时间 */
     @LastModifiedDate
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 
 
 

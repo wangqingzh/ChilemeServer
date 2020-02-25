@@ -19,15 +19,17 @@ public class MyFavorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer post_id;
+    private Integer postId;
 
-    private Integer user_id;
+    private Integer userId;
 
-    private Boolean is_delete = false;
+    private Boolean isDelete = false;
 
+    /* 创建时间 */
     @CreatedDate
-    private LocalDateTime create_time;
+    private LocalDateTime createTime;
 
+    /* 更新时间 */
     @LastModifiedDate
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 }

@@ -20,19 +20,21 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /* 主题id */
-    private Integer post_id;
+    private Integer postId;
     /* 评论 */
     private String content;
     /* 评论用户 */
-    private Integer from_uid;
+    private Integer fromUid;
     /* 被回复用户 当评论帖子时 to_uid 为空 */
-    private Integer to_uid;
+    private Integer toUid;
     /* 是否被删除 默认 否 */
-    private boolean is_delete = false;
+    private boolean isDelete = false;
 
+    /* 创建时间 */
     @CreatedDate
-    private LocalDateTime create_time;
+    private LocalDateTime createTime;
 
+    /* 更新时间 */
     @LastModifiedDate
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 }

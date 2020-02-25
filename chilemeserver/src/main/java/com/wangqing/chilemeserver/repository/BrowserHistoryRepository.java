@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface BrowserHistoryRepository extends JpaRepository<BrowserHistory, Integer> {
 
     /* 根据 userId 查询用户浏览历史数 */
-    Integer countByUser_id(Integer userId);
+    Integer countByUserId(Integer userId);
 }

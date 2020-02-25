@@ -1,18 +1,21 @@
 package com.wangqing.chilemeserver.repository;
 
 import com.wangqing.chilemeserver.object.dbo.Post;
+import com.wangqing.chilemeserver.object.dto.FoodRecPostDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
+
     /* 根据发帖人的id 查询该发帖人发过的贴子数量 */
-    Integer countByPost_user_id(Integer postUserId);
+    Integer countByUserId(Integer postUserId);
 
     /* 保存更新 */
     @Override
@@ -23,5 +26,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Modifying
     @Query(value = "UPDATE post SET image_url = ?1 WHERE post_id = ?2", nativeQuery = true)
     int updateImageUrlByPostId(String imageUrl, Integer postId);
+
 
 }

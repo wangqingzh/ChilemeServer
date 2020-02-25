@@ -1,6 +1,6 @@
 package com.wangqing.chilemeserver.object.dbo;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,30 +15,36 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class CateRecommend {
+@NoArgsConstructor
+@RequiredArgsConstructor(staticName = "of")
+public class FoodRec {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NonNull
     /* 帖子id */
-    private Integer post_id;
+    private Integer postId;
 
+    @NonNull
     /* 帖子内容 */
     private String content;
 
-    /* 推荐分区 */
-    private Integer recommend_id;
+    @NonNull
+    /* 推荐分类 */
+    private Integer classifyId;
 
+    @NonNull
     /* 综合推荐分数 */
-    private float recommend_score;
+    private float recommendScore;
 
 
     /* 创建时间 */
     @CreatedDate
-    private LocalDateTime create_time;
+    private LocalDateTime createTime;
 
     /* 更新时间 */
     @LastModifiedDate
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 
 }

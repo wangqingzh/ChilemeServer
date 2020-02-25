@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface MyFavoriteRepository extends JpaRepository<MyFavorite, Integer> {
 
     /* 根据用户id 查询用户的收藏数 */
-    Integer countByUser_id(Integer userId);
+    Integer countByUserId(Integer userId);
 }

@@ -20,17 +20,19 @@ public class MyLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /* 对应的帖子或评论id */
-    private Integer type_id;
+    private Integer typeId;
     /* 0 帖子 1 评论  */
     private Integer type;
     /* 点赞的用户id */
-    private Integer user_id;
+    private Integer userId;
     /* 该条点赞时候有效 */
     private Boolean status = true;
-    /*  */
+
+    /* 创建时间 */
     @CreatedDate
-    private LocalDateTime create_time;
-    /*  */
+    private LocalDateTime createTime;
+
+    /* 更新时间 */
     @LastModifiedDate
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 }

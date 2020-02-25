@@ -18,18 +18,18 @@ public class Post {
     /* 帖子id */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer post_id;
+    private Integer postId;
     /* 帖子类型 0 校园餐饮 1 美食推荐 */
-    private Integer post_type;
+    private Integer postType = 0;
 
     /* 帖子标题 */
     private String headline;
 
     /* 发布的图片链接 */
-    private String image_url = null;
+    private String imageUrl = null;
 
     /* 发帖人 */
-    private Integer post_user_id;
+    private Integer userId;
 
 
     /* 默认有效 false为删除 */
@@ -38,9 +38,9 @@ public class Post {
 
     /* 创建时间 */
     @CreatedDate
-    private LocalDateTime create_time;
+    private LocalDateTime createTime;
 
     /* 更新时间 */
     @LastModifiedDate
-    private LocalDateTime update_time;
+    private LocalDateTime updateTime;
 }
