@@ -36,7 +36,7 @@ public class FoodRecApi {
      */
     @GetMapping("/browser")
     public HttpEntity<?> BrowserByClassifyId(@RequestBody FoodRecBroReqDto foodRecBroReqDto){
-        //List<FoodRecBrowserDto> foodRecBrowserDtoList = foodRecService.
-        return new ResponseEntity<>(CommonResult.success(), HttpStatus.OK);
+        List<FoodRecBrowserDto> foodRecBrowserDtoList = foodRecService.foodRecBrowserByClassifyId(foodRecBroReqDto);
+        return new ResponseEntity<>(CommonResult.success(foodRecBrowserDtoList), HttpStatus.OK);
     }
 }

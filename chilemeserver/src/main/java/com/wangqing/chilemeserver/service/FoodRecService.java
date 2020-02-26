@@ -2,6 +2,7 @@ package com.wangqing.chilemeserver.service;
 
 import com.wangqing.chilemeserver.object.dbo.FoodRec;
 import com.wangqing.chilemeserver.object.dbo.Post;
+import com.wangqing.chilemeserver.object.dto.FoodRecBroReqDto;
 import com.wangqing.chilemeserver.object.dto.FoodRecBrowserDto;
 import com.wangqing.chilemeserver.object.dto.FoodRecPostDto;
 import com.wangqing.chilemeserver.repository.FoodRecMapper;
@@ -38,14 +39,14 @@ public class FoodRecService {
         return post.getPostId();
     }
 
+
     /**
      * 根据推荐分类和用户id 取出所有的帖子
-     * @param userId
-     * @param classifyId
+     * @param foodRecBroReqDto
      * @return
      */
-    List<FoodRecBrowserDto> foodRecBrowserByClassifyId(Integer userId, Integer classifyId){
-        return foodRecMapper.foodRecBrowserByClassifyId(userId, classifyId);
+    public List<FoodRecBrowserDto> foodRecBrowserByClassifyId(FoodRecBroReqDto foodRecBroReqDto){
+        return foodRecMapper.foodRecBrowserByClassifyId(foodRecBroReqDto.getUserId(), foodRecBroReqDto.getClassifyId());
     }
 
 
