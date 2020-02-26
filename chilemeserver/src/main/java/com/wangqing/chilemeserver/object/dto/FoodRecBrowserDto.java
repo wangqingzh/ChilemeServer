@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-
+@AllArgsConstructor
 @ToString
 public class FoodRecBrowserDto {
 
@@ -38,16 +38,5 @@ public class FoodRecBrowserDto {
     /* 评论数 */
     private Integer commentNumber;
 
-    public FoodRecBrowserDto(Integer postId, Date postTime, String postHeadline, String postImageUrl, Integer userId, String userName, String userAvatar, Integer likeNumber, boolean likeStatus, Integer commentNumber) {
-        this.postId = postId;
-        this.postTime = postTime;
-        this.postHeadline = postHeadline;
-        this.postImageUrl = postImageUrl;
-        this.userId = userId;
-        this.userName = userName;
-        this.userAvatar = userAvatar;
-        this.likeNumber = likeNumber;
-        this.likeStatus = likeStatus;
-        this.commentNumber = commentNumber;
-    }
+
 }
