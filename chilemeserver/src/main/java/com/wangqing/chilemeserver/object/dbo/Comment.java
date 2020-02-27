@@ -27,8 +27,8 @@ public class Comment {
     private Integer fromUid;
     /* 被回复用户 当评论帖子时 to_uid 为空 */
     private Integer toUid;
-    /* 是否被删除 默认 否 */
-    private boolean isDelete = false;
+    /* 是否有效 默认 有 */
+    private boolean status = true;
 
     /* 创建时间 */
     @CreatedDate
