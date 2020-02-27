@@ -39,9 +39,12 @@ spring:
 
 
 # log configuration
-#logging:
-#  level:
-#    root: debug
+logging:
+  level:
+    com:
+      wangqing:
+        chilemeserver:
+          repository: debug
 
 # file configuration
 file-path: /home/qing/tmp/ # D:\file\  # file save location

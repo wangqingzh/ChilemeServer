@@ -8,7 +8,6 @@ import com.wangqing.chilemeserver.object.dto.FoodRecPostDto;
 import com.wangqing.chilemeserver.repository.FoodRecMapper;
 import com.wangqing.chilemeserver.repository.FoodRecRepository;
 import com.wangqing.chilemeserver.repository.PostRepository;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,11 @@ public class FoodRecService {
     @Autowired
     FoodRecMapper foodRecMapper;
 
-
+    /**
+     * 美食推荐 发帖
+     * @param postDto
+     * @return
+     */
     public Integer addPost(FoodRecPostDto postDto){
         Post post = new Post();
         post.setPostType(1);

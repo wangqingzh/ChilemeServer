@@ -34,7 +34,7 @@ public class FoodRecApi {
      * 根据推荐分类 获取全部信息
      * @return
      */
-    @GetMapping("/browser")
+    @PostMapping("/browser")
     public HttpEntity<?> BrowserByClassifyId(@RequestBody FoodRecBroReqDto foodRecBroReqDto){
         List<FoodRecBrowserDto> foodRecBrowserDtoList = foodRecService.foodRecBrowserByClassifyId(foodRecBroReqDto);
         return new ResponseEntity<>(CommonResult.success(foodRecBrowserDtoList), HttpStatus.OK);
