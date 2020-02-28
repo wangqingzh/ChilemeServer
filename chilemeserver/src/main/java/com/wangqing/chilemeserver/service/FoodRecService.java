@@ -1,9 +1,11 @@
 package com.wangqing.chilemeserver.service;
 
+import com.wangqing.chilemeserver.object.ao.FRDSel;
 import com.wangqing.chilemeserver.object.dbo.FoodRec;
 import com.wangqing.chilemeserver.object.dbo.Post;
 import com.wangqing.chilemeserver.object.dto.FoodRecBroReqDto;
 import com.wangqing.chilemeserver.object.dto.FoodRecBrowserDto;
+import com.wangqing.chilemeserver.object.dto.FoodRecDetailDto;
 import com.wangqing.chilemeserver.object.dto.FoodRecPostDto;
 import com.wangqing.chilemeserver.repository.FoodRecMapper;
 import com.wangqing.chilemeserver.repository.FoodRecRepository;
@@ -52,6 +54,8 @@ public class FoodRecService {
         return foodRecMapper.foodRecBrowserByClassifyId(foodRecBroReqDto.getUserId(), foodRecBroReqDto.getClassifyId());
     }
 
-
+    public FoodRecDetailDto foodRecDetailByFRDSel(FRDSel frdSel){
+        return foodRecMapper.FoodRecDetailByFRDSel(frdSel);
+    }
 
 }

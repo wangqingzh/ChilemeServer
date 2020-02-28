@@ -1,6 +1,7 @@
 package com.wangqing.chilemeserver.web.api;
 
 import com.wangqing.chilemeserver.object.ao.CommonResult;
+import com.wangqing.chilemeserver.object.ao.FRDSel;
 import com.wangqing.chilemeserver.object.dto.FoodRecBroReqDto;
 import com.wangqing.chilemeserver.object.dto.FoodRecBrowserDto;
 import com.wangqing.chilemeserver.object.dto.FoodRecPostDto;
@@ -38,5 +39,10 @@ public class FoodRecApi {
     public HttpEntity<?> BrowserByClassifyId(@RequestBody FoodRecBroReqDto foodRecBroReqDto){
         List<FoodRecBrowserDto> foodRecBrowserDtoList = foodRecService.foodRecBrowserByClassifyId(foodRecBroReqDto);
         return new ResponseEntity<>(CommonResult.success(foodRecBrowserDtoList), HttpStatus.OK);
+    }
+
+    @PostMapping("/detail")
+    public HttpEntity<?> DetailByFRDSel(@RequestBody FRDSel frdSel){
+        return new ResponseEntity<>(CommonResult.success(foodRecService.foodRecDetailByFRDSel(frdSel)), HttpStatus.OK);
     }
 }

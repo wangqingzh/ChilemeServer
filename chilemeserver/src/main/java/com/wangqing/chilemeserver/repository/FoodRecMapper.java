@@ -31,8 +31,8 @@ public interface FoodRecMapper {
             "        (SELECT COUNT(*) FROM my_favorite mf WHERE mf.post_id = p.post_id AND mf.status = true) as favoriteNumber," +
             "        IFNULL((SELECT status FROM my_favorite mf WHERE mf.post_id = p.post_id AND mf.user_id = ${userId}),0) as favoriteStatus," +
             "       (SELECT COUNT(*) FROM comment cm WHERE cm.post_id = p.post_id AND cm.status = true) as commentNumber," +
-            "        IFNULL((SELECT status FROM attention_fans af WHERE af.attention_id = ${postUserId} AND af.fans_id = ${userId} ),0) as attentionNumber " +
+            "        IFNULL((SELECT status FROM attention_fans af WHERE af.attention_id = ${postUserId} AND af.fans_id = ${userId} AND af.status = true ),0) as attentionStatus " +
             "FROM  post p INNER JOIN food_rec fr ON p.post_id = fr.post_id  INNER  JOIN user_info ui ON p.user_id = ui.user_id" +
-            "WHERE  p.post_id = ${postId}")
+            " WHERE  p.post_id = ${postId}")
     FoodRecDetailDto FoodRecDetailByFRDSel(FRDSel frdSel);
 }

@@ -49,6 +49,6 @@ public class FoodRecDetailDto {
     private Integer commentNumber;
 
     /* 关注状态 */
-    private boolean attentionNumber;
+    private boolean attentionStatus;
 
 }
