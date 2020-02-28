@@ -1,6 +1,9 @@
 package com.wangqing.chilemeserver.object.dbo;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,16 +17,18 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@RequiredArgsConstructor(staticName = "of")
+@NoArgsConstructor
 public class AttentionFans {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    @NonNull
     private Integer attentionId;
-
+    @NonNull
     private Integer fansId;
 
-    private Boolean enable = true;
+    private Boolean status = true;
 
     /* 创建时间 */
     @CreatedDate

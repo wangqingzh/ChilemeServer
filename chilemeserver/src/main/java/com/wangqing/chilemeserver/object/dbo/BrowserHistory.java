@@ -23,6 +23,8 @@ public class BrowserHistory {
 
     private Integer userId;
 
+    private boolean status;
+
     /* 创建时间 */
     @CreatedDate
     private LocalDateTime createTime;
