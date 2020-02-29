@@ -2,6 +2,7 @@ package com.wangqing.chilemeserver.web.api;
 
 import com.wangqing.chilemeserver.object.ao.CommonResult;
 import com.wangqing.chilemeserver.object.dbo.Comment;
+import com.wangqing.chilemeserver.object.dto.CommentBrowserDto;
 import com.wangqing.chilemeserver.object.dto.CommentPostDto;
 import com.wangqing.chilemeserver.repository.CommentRepository;
 import com.wangqing.chilemeserver.service.CommentService;
@@ -19,17 +20,14 @@ public class CommentApi {
     @Autowired
     CommentService commentService;
 
-    @Autowired
-    CommentRepository commentRepository;
-
     /**
-     * 根据 帖子id 获取所有评论
+     * 根据 帖子id 和　访问用户id 获取所有评论
      * @param postId
      * @return
      */
-    @GetMapping("/{postId}")
-    public HttpEntity<?> getCommentByPostId(@PathVariable("postId") Integer postId){
-        List<Comment> comments = commentRepository.findByPostIdAndStatus(postId, true);
+    @GetMapping()
+    public HttpEntity<?> getCommentByPostId(@RequestParam("postId") Integer postId, @RequestParam("userId") Integer userId){
+        List<CommentBrowserDto> comments = commentService.getCommentByPostIdAndUserId(postId, userId);
         return  new ResponseEntity<>(CommonResult.success(comments), HttpStatus.OK);
     }
 
