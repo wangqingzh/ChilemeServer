@@ -21,6 +21,6 @@ public class ChilemeserverApplicationTests {
 
     @Test
     public void test() throws IOException {
-        commentRepository.findByPostIdAndStatus(1, false);
+        //commentRepository.findByPostIdAndStatus(1, false);
     }
 }

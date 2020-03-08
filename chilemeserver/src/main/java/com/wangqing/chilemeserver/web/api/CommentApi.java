@@ -26,7 +26,7 @@ public class CommentApi {
      * @return
      */
     @GetMapping()
-    public HttpEntity<?> getCommentByPostId(@RequestParam("postId") Integer postId, @RequestParam("userId") Integer userId){
+    public HttpEntity<?> getComment(@RequestParam("postId") Integer postId, @RequestParam("userId") Integer userId){
         List<CommentBrowserDto> comments = commentService.getCommentByPostIdAndUserId(postId, userId);
         return  new ResponseEntity<>(CommonResult.success(comments), HttpStatus.OK);
     }
