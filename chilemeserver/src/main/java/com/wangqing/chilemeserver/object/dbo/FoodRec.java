@@ -38,7 +38,6 @@ public class FoodRec {
     /* 综合推荐分数 */
     private float recommendScore;
 
-
     /* 创建时间 */
     @CreatedDate
     private LocalDateTime createTime;

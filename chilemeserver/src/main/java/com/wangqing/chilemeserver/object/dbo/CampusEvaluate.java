@@ -23,7 +23,7 @@ public class CampusEvaluate {
     private Integer postId;
     /* 食堂id */
     private Integer hallId;
-    /* 点名 */
+    /* 店名 */
     private String storeName;
 
     private String dish;

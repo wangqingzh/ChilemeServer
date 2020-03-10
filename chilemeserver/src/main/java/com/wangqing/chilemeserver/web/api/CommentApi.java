@@ -1,10 +1,8 @@
 package com.wangqing.chilemeserver.web.api;
 
 import com.wangqing.chilemeserver.object.ao.CommonResult;
-import com.wangqing.chilemeserver.object.dbo.Comment;
 import com.wangqing.chilemeserver.object.dto.CommentBrowserDto;
 import com.wangqing.chilemeserver.object.dto.CommentPostDto;
-import com.wangqing.chilemeserver.repository.CommentRepository;
 import com.wangqing.chilemeserver.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
