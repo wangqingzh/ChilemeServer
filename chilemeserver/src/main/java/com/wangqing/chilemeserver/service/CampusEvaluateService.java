@@ -2,11 +2,15 @@ package com.wangqing.chilemeserver.service;
 
 import com.wangqing.chilemeserver.object.dbo.CampusEvaluate;
 import com.wangqing.chilemeserver.object.dbo.Post;
+import com.wangqing.chilemeserver.object.dto.EvaluateBrowserDto;
 import com.wangqing.chilemeserver.object.dto.EvaluatePostDto;
+import com.wangqing.chilemeserver.repository.CampusEvaluateMapper;
 import com.wangqing.chilemeserver.repository.CampusEvaluateRepository;
 import com.wangqing.chilemeserver.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CampusEvaluateService {
@@ -14,6 +18,8 @@ public class CampusEvaluateService {
     PostRepository postRepository;
     @Autowired
     CampusEvaluateRepository campusEvaluateRepository;
+    @Autowired
+    CampusEvaluateMapper campusEvaluateMapper;
 
     /**
      * 添加校园餐饮点评
@@ -35,9 +41,18 @@ public class CampusEvaluateService {
         campusEvaluate.setStoreName(evaluate.getStoreName());
         campusEvaluate.setHallId(evaluate.getHallId());
         campusEvaluate.setPostId(post.getPostId());
+        campusEvaluateRepository.saveAndFlush(campusEvaluate);
         return post.getPostId();
     }
 
-
+    /**
+     * 根据参数获取餐饮评价
+     * @param userId　访问人userId
+     * @param hallId  食堂 hallId
+     * @return
+     */
+    public List<EvaluateBrowserDto> getEvaluate(Integer userId, Integer hallId){
+        return campusEvaluateMapper.getEvaluate(userId, hallId);
+    }
 
 }

@@ -30,10 +30,9 @@ public class FileService {
             case UploadFileDto.USER_COVER:
                 userInfoRepository.updateCoverUrlByUserId(fileUrl, id);
                 break;
-            case UploadFileDto.POST_IMAGE:
-                postRepository.updateImageUrlByPostId(fileUrl, id);
-                break;
+            case UploadFileDto.FOOD_REC_IMAGE:
             case UploadFileDto.EVALUATION_IMAGE:
+                postRepository.updateImageUrlByPostId(fileUrl, id);
                 break;
             default:
                 break;
