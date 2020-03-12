@@ -2,7 +2,9 @@ package com.wangqing.chilemeserver.service;
 
 import com.wangqing.chilemeserver.object.dbo.CampusEvaluate;
 import com.wangqing.chilemeserver.object.dbo.Post;
+import com.wangqing.chilemeserver.object.dto.CESel;
 import com.wangqing.chilemeserver.object.dto.EvaluateBrowserDto;
+import com.wangqing.chilemeserver.object.dto.EvaluateDetailDto;
 import com.wangqing.chilemeserver.object.dto.EvaluatePostDto;
 import com.wangqing.chilemeserver.repository.CampusEvaluateMapper;
 import com.wangqing.chilemeserver.repository.CampusEvaluateRepository;
@@ -18,7 +20,7 @@ public class CampusEvaluateService {
     PostRepository postRepository;
     @Autowired
     CampusEvaluateRepository campusEvaluateRepository;
-    @Autowired
+    @Autowired(required = false)
     CampusEvaluateMapper campusEvaluateMapper;
 
     /**
@@ -46,13 +48,17 @@ public class CampusEvaluateService {
     }
 
     /**
-     * 根据参数获取餐饮评价
+     * 根据参数获取 餐饮评价
      * @param userId　访问人userId
      * @param hallId  食堂 hallId
      * @return
      */
     public List<EvaluateBrowserDto> getEvaluate(Integer userId, Integer hallId){
         return campusEvaluateMapper.getEvaluate(userId, hallId);
+    }
+
+    public EvaluateDetailDto getEvaluateDetail(CESel ceSel){
+        return campusEvaluateMapper.getEvaluateDetailByCESel(ceSel);
     }
 
 }

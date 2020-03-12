@@ -1,6 +1,7 @@
 package com.wangqing.chilemeserver.web.api;
 
 import com.wangqing.chilemeserver.object.ao.CommonResult;
+import com.wangqing.chilemeserver.object.dto.CESel;
 import com.wangqing.chilemeserver.object.dto.EvaluatePostDto;
 import com.wangqing.chilemeserver.service.CampusEvaluateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,16 @@ public class EvaluateApi {
                                      @RequestParam("hallId") Integer hallId
     ) {
         return new ResponseEntity<>(CommonResult.success(campusEvaluateService.getEvaluate(userId, hallId)), HttpStatus.OK);
+    }
+
+    /**
+     * 获取餐饮评价的详情
+     * @param ceSel
+     * @return
+     */
+    @GetMapping("/detail")
+    public HttpEntity<?> getEvaluateDetail(CESel ceSel){
+
+        return new ResponseEntity<>(CommonResult.success(campusEvaluateService.getEvaluateDetail(ceSel)), HttpStatus.OK);
     }
 }

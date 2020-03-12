@@ -25,9 +25,8 @@ public class CampusEvaluate {
     private Integer hallId;
     /* 店名 */
     private String storeName;
-
+    /* 菜品 */
     private String dish;
-
     /* 点评内容 */
     private String content;
 
