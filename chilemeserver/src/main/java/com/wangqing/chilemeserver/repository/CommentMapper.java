@@ -1,6 +1,7 @@
 package com.wangqing.chilemeserver.repository;
 
 import com.wangqing.chilemeserver.object.dto.CommentBrowserDto;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -20,4 +21,5 @@ public interface CommentMapper {
             "FROM comment cm INNER JOIN user_info ui ON cm.from_uid = ui.user_id " +
             "WHERE cm.post_id = ${postId}")
     List<CommentBrowserDto> getCommentByPostIdAndUserId(Integer postId, Integer userId);
+
 }

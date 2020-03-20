@@ -43,7 +43,6 @@ public class EvaluateApi {
      */
     @GetMapping("/detail")
     public HttpEntity<?> getEvaluateDetail(CESel ceSel){
-
         return new ResponseEntity<>(CommonResult.success(campusEvaluateService.getEvaluateDetail(ceSel)), HttpStatus.OK);
     }
 }
