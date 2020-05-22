@@ -3,6 +3,7 @@ package com.wangqing.chilemeserver.web.api;
 import com.wangqing.chilemeserver.object.ao.CommonResult;
 import com.wangqing.chilemeserver.object.dto.ModifyFieldByUserIdDto;
 import com.wangqing.chilemeserver.object.dto.UserInfoDto;
+import com.wangqing.chilemeserver.repository.MineMapper;
 import com.wangqing.chilemeserver.repository.UserInfoRepository;
 import com.wangqing.chilemeserver.repository.UserRepository;
 import com.wangqing.chilemeserver.service.MineService;
@@ -25,6 +26,9 @@ public class MineApi {
     UserInfoRepository userInfoRepository; // 用户信息仓库
     @Autowired
     UserRepository userRepository; // 用户核心信息仓库
+
+    @Autowired(required = false)
+    MineMapper mineMapper;
 
     /**
      * 返回用户信息 展示在我的页面上
@@ -84,6 +88,16 @@ public class MineApi {
     public HttpEntity<?> modifyPasswordByUserId(@RequestBody ModifyFieldByUserIdDto phone){
         userRepository.updateCredentialByUserId(phone.getField(), phone.getUserId());
         return new ResponseEntity<>(CommonResult.success(), HttpStatus.OK);
+    }
+
+    @GetMapping("/gallery/{userId}")
+    public HttpEntity<?> getGallery(@PathVariable("userId") int userId){
+        return new ResponseEntity<>(CommonResult.success(mineMapper.getFoodGallery(userId)), HttpStatus.OK);
+    }
+
+    @GetMapping("/hotList")
+    public HttpEntity<?> getHotList(){
+        return new ResponseEntity<>(CommonResult.success(mineMapper.getHotList()), HttpStatus.OK);
     }
 
 }
