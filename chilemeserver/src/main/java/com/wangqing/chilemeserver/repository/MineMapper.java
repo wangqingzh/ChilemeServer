@@ -11,7 +11,7 @@ import java.util.List;
 public interface MineMapper {
     @Select("SELECT post_id, post_type, headline, image_url, user_id " +
             "FROM post " +
-            "WHERE  image_url != null AND user_id = ${userId}")
+            "WHERE  image_url IS NOT NULL AND user_id = ${userId}")
     List<FoodGalleryDto> getFoodGallery(Integer userId);
 
     @Select("SELECT COUNT(*) AS count , p.post_id, p.post_type, p.headline, p.user_id " +

@@ -17,7 +17,7 @@ public interface CampusEvaluateMapper {
             "        IFNULL((SELECT status FROM my_like my WHERE my.type = 0 AND my.type_id = p.post_id AND my.user_id = ${userId}),0) as likeStatus," +
             "        (SELECT COUNT(*) FROM comment cm WHERE cm.post_id = p.post_id) as commentNumber " +
             "FROM campus_evaluate ce INNER JOIN post p ON ce.post_id = p.post_id INNER  JOIN user_info ui ON p.user_id = ui.user_id " +
-            "WHERE   ce.hall_id = ${hallId}")
+            "WHERE   ce.hall_id = ${hallId} ORDER BY p.create_time DESC")
     List<EvaluateBrowserDto> getEvaluate(@Param("userId") Integer userId, @Param("hallId") Integer hallId);
 
 
